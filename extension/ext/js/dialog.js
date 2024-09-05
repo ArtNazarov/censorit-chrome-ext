@@ -3,10 +3,32 @@ const adultFilters = [
 'porn'
 ];
 
-document.getElementById('adultFilters').onclick = function(e){
-  for(let tag of adultFilters){
+
+const betFilters = [
+  'gambl',
+  'betting',
+  'casin',
+  'lotter',
+  'slot',
+  'bookmak',
+  'roulett',
+  'poker',
+  'gaming',
+  'strateg'
+];
+
+function addFilterFromArr(arr){
+  for(let tag of arr){
     document.getElementById("tags").value =  document.getElementById("tags").value + "\r\n" + tag;
   }
+}
+
+document.getElementById('adultFilters').onclick = function(e){
+  addFilterFromArr(adultFilters);
+}
+
+document.getElementById('betFilters').onclick = function(e){
+  addFilterFromArr(betFilters);
 }
 
 
