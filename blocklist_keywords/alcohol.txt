@@ -1,0 +1,8 @@
+beverag
+wine
+beer
+spirits
+cocktail
+drunk
+hangover
+distill

@@ -1,0 +1,8 @@
+drug
+narcotic
+stimulant
+opioid
+cannabis
+hallucinogen
+substance
+psychoactive
