@@ -66,13 +66,15 @@ function isDocumentHasTag(tag) {
     }
   }
 
-  // Получаем HTML код страницы
-  const pageHTML = document.documentElement.outerHTML;
+  // Поиск по тексту
+   const elements = document.querySelectorAll('*'); 
+   for (let element of elements){
+    if (element.textContent.toLowerCase().includes(tag)){
+      return true;
+    }
+   }
 
-  // Проверяем, содержится ли тег в HTML коде страницы
-  if (pageHTML.toLowerCase().includes(tag)) {
-    return true;
-  }
+  
 
   // Если тег не найден нигде, возвращаем false
   return false;
