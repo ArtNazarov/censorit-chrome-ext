@@ -1,21 +1,27 @@
-const adultFilters = [
-'xxx',
-'porn'
-];
+const AdultUrl = '';
+const BetUrl = '';
 
+async function getLines(url) {
+  try {
+      // Получаем ответ от сервера
+      const response = await fetch(url);
+      
+      // Проверяем, успешен ли ответ
+      if (!response.ok) {
+          throw new Error(`Ошибка HTTP: ${response.status}`);
+      }
 
-const betFilters = [
-  'gambl',
-  'betting',
-  'casin',
-  'lotter',
-  'slot',
-  'bookmak',
-  'roulett',
-  'poker',
-  'gaming',
-  'strateg'
-];
+      // Получаем текст ответа
+      const text = await response.text();
+
+      // Разделяем текст на строки и возвращаем массив
+      return text.split('\n');
+  } catch (error) {
+      console.error('Ошибка при получении данных:', error);
+      return []; // Возвращаем пустой массив в случае ошибки
+  }
+}
+
 
 function addFilterFromArr(arr){
   for(let tag of arr){
@@ -23,12 +29,25 @@ function addFilterFromArr(arr){
   }
 }
 
+function loadFromUrlToApp(url){
+  getLines(url)
+  .then(lines => {
+      console.log('Строки из файла:', lines);
+      const filters = lines.split('\n');
+      addFilterFromArr(filters);
+  })
+  .catch(error => {
+      console.error('Ошибка:', error);
+  });
+  
+}
+
 document.getElementById('adultFilters').onclick = function(e){
-  addFilterFromArr(adultFilters);
+  loadFromUrlToApp(AdultUrl);
 }
 
 document.getElementById('betFilters').onclick = function(e){
-  addFilterFromArr(betFilters);
+  loadFromUrlToApp(BetUrl);
 }
 
 
