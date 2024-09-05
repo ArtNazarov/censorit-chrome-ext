@@ -24,6 +24,8 @@ async function getLines(url) {
 
 
 function addFilterFromArr(arr){
+  console.log('Добавляем на форму');
+  console.log(arr);
   for(let tag of arr){
     document.getElementById("tags").value =  document.getElementById("tags").value + "\r\n" + tag;
   }
@@ -32,9 +34,8 @@ function addFilterFromArr(arr){
 function loadFromUrlToApp(url){
   getLines(url)
   .then(lines => {
-      console.log('Строки из файла:', lines);
-      const filters = lines.split('\n');
-      addFilterFromArr(filters);
+      console.log('Фильтры из файла:', lines);
+      addFilterFromArr(lines);
   })
   .catch(error => {
       console.error('Ошибка:', error);
