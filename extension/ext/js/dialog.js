@@ -1,5 +1,5 @@
-const AdultUrl = '';
-const BetUrl = '';
+const AdultUrl = 'https://raw.githubusercontent.com/ArtNazarov/censorit-chrome-ext/main/blocklist_keywords/adult.txt';
+const BetUrl = 'https://raw.githubusercontent.com/ArtNazarov/censorit-chrome-ext/main/blocklist_keywords/gambling.txt';
 
 async function getLines(url) {
   try {
