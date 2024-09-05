@@ -1,3 +1,15 @@
+const adultFilters = [
+'xxx',
+'porn'
+];
+
+document.getElementById('adultFilters').onclick = function(e){
+  for(let tag of adultFilters){
+    document.getElementById("tags").value =  document.getElementById("tags").value + "\r\n" + tag;
+  }
+}
+
+
 document.forms[0].onsubmit = function(e) {
     e.preventDefault(); // Prevent submission
     let tags = document.getElementById('tags').value;

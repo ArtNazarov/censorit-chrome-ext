@@ -20,6 +20,28 @@ document.body.appendChild(layer);
 return layer;
 }
 
+function addInfo(title, message){
+  // Create the layer element
+  const layer = document.createElement('div');
+  
+  // Set the ID
+  layer.id = 'information_page';
+  
+  // Set CSS properties
+  layer.style.position = 'fixed'; // Position it fixed to cover the viewport
+  layer.style.top = '0'; // Align to the top
+  layer.style.left = '0'; // Align to the left
+  layer.style.width = '100vw'; // Full width
+  layer.style.height = '100vh'; // Full height
+  layer.style.backgroundColor = '#000';
+  layer.style.color = '#f00'; 
+  layer.style.zIndex = 10000;
+  layer.innerHTML = `<h1 style="text-align:center">${title}</h1><p>${message}</p>`;
+  // Append the layer to the body
+  document.body.appendChild(layer);
+  return layer;
+  }
+
 function isDocumentHasTag(tag) {
   // Приводим тег к нижнему регистру для регистронезависимого сравнения
   tag = tag.toLowerCase();
@@ -70,6 +92,7 @@ chrome.runtime.sendMessage({method: "sync_tags"}, function(response) {
  
 
 /* MAIN */
+
  
 
   
@@ -81,7 +104,10 @@ chrome.extension.sendMessage({}, function(response) {
   
   
 	var readyStateCheckInterval = setInterval(function() {
-    
+ 
+   
+
+
 	if (document.readyState === "complete") {
 		
     clearInterval(readyStateCheckInterval);
@@ -103,28 +129,32 @@ chrome.extension.sendMessage({}, function(response) {
   let arrTags = tags.split(/\r?\n/);  
  
   let flag = false;
-  
+  let foundedStr = "";
   for (let i=0;i<arrTags.length;i++){
     let tag = arrTags[i].trim();
     if (tag !== "" && isDocumentHasTag(tag)){
       console.log(`Тег ${tag} найден! `);
+      foundedStr += " "+tag;
       flag = true;
     } else {
       console.log(`Тег ${tag} не найден... `);
     }
   }
 
-  if (!flag) layer.remove();
-  if (flag) {window.location.href = "http://0.0.0.0";};
-   
+  if (flag){
+    document.body.innerHTML = '';
+    addInfo("Заблокировано", "Найден(ы):" + foundedStr);
+    let counter = 0;
+    setInterval( function(){if (counter>3) { window.location.href = "http://0.0.0.0";}; counter++;}, 2000);
     
-          
-       
-	
+  } else {
+    layer.remove();
+  }
+  
           
         }
     }
-    , 3500);
+    , 1500);
   
  
   
