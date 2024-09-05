@@ -1,5 +1,25 @@
- 
-    
+function addLayer(){
+// Create the layer element
+const layer = document.createElement('div');
+
+// Set the ID
+layer.id = 'blank_screen_page';
+
+// Set CSS properties
+layer.style.position = 'fixed'; // Position it fixed to cover the viewport
+layer.style.top = '0'; // Align to the top
+layer.style.left = '0'; // Align to the left
+layer.style.width = '100vw'; // Full width
+layer.style.height = '100vh'; // Full height
+layer.style.backgroundColor = 'rgba(0, 0, 0, 0.9)'; // Semi-transparent background
+layer.style.backdropFilter = 'blur(10px)';
+layer.style.zIndex = 9999;
+
+// Append the layer to the body
+document.body.appendChild(layer);
+return layer;
+}
+
 function isDocumentHasTag(tag) {
   // Приводим тег к нижнему регистру для регистронезависимого сравнения
   tag = tag.toLowerCase();
@@ -57,14 +77,16 @@ chrome.runtime.sendMessage({method: "sync_tags"}, function(response) {
 chrome.extension.sendMessage({}, function(response) {
  
   
-
+  let layer = addLayer();
   
   
 	var readyStateCheckInterval = setInterval(function() {
     
 	if (document.readyState === "complete") {
-		clearInterval(readyStateCheckInterval);
-
+		
+    clearInterval(readyStateCheckInterval);
+  
+    
 		// ----------------------------------------------------------
 		// This part of the script triggers when page is done loading
 		console.log("(C) CensorIt Nazarov A.A., 2024, Orenburg, Russia");
@@ -83,17 +105,17 @@ chrome.extension.sendMessage({}, function(response) {
   let flag = false;
   
   for (let i=0;i<arrTags.length;i++){
-    let tag = arrTags[i];
-    if (isDocumentHasTag(tag)){
+    let tag = arrTags[i].trim();
+    if (tag !== "" && isDocumentHasTag(tag)){
       console.log(`Тег ${tag} найден! `);
-      // redirect!
-      window.location.href = "http://0.0.0.0";
+      flag = true;
     } else {
       console.log(`Тег ${tag} не найден... `);
     }
   }
 
- 
+  if (!flag) layer.remove();
+  if (flag) {window.location.href = "http://0.0.0.0";};
    
     
           
@@ -102,7 +124,7 @@ chrome.extension.sendMessage({}, function(response) {
           
         }
     }
-    , 3000);
+    , 3500);
   
  
   
