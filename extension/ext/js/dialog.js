@@ -6,6 +6,7 @@ const DrugsUrl = 'https://raw.githubusercontent.com/ArtNazarov/censorit-chrome-e
 const NuditityUrl = 'https://raw.githubusercontent.com/ArtNazarov/censorit-chrome-ext/main/blocklist_keywords/nudity.txt';
 const TobaccoUrl = 'https://raw.githubusercontent.com/ArtNazarov/censorit-chrome-ext/main/blocklist_keywords/tobacco.txt';
 const WearUrl = 'https://raw.githubusercontent.com/ArtNazarov/censorit-chrome-ext/main/blocklist_keywords/wear.txt';
+const AuctionUrl = 'https://raw.githubusercontent.com/ArtNazarov/censorit-chrome-ext/main/blocklist_keywords/auctions.txt';
 
 async function getLines(url) {
   try {
@@ -79,6 +80,10 @@ document.getElementById('tobaccoFilters').onclick = function(e){
 
 document.getElementById('wearFilters').onclick = function(e){
   loadFromUrlToApp(WearUrl);
+}
+
+document.getElementById('auctionFilters').onclick = function(e){
+  loadFromUrlToApp(AuctionUrl);
 }
 
 document.forms[0].onsubmit = function(e) {

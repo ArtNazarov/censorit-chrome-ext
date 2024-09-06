@@ -1,0 +1,9 @@
+bid
+auction
+lot
+price
+reserve
+winning
+catalog
+paddle
+buyer
