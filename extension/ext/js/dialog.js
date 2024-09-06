@@ -10,6 +10,7 @@ const AuctionUrl = 'https://raw.githubusercontent.com/ArtNazarov/censorit-chrome
 const PrisonUrl = 'https://raw.githubusercontent.com/ArtNazarov/censorit-chrome-ext/main/blocklist_keywords/prison.txt';
 const FraudUrl = 'https://raw.githubusercontent.com/ArtNazarov/censorit-chrome-ext/main/blocklist_keywords/fraud.txt';
 const WeaponUrl = 'https://raw.githubusercontent.com/ArtNazarov/censorit-chrome-ext/main/blocklist_keywords/weapon.txt';
+const NegativeUrl = 'https://raw.githubusercontent.com/ArtNazarov/censorit-chrome-ext/main/blocklist_keywords/negative.txt';
 
 async function getLines(url) {
   try {
@@ -99,6 +100,10 @@ document.getElementById('fraudFilters').onclick = function(e){
 
 document.getElementById('weaponFilters').onclick = function(e){
   loadFromUrlToApp(WeaponUrl);
+}
+
+document.getElementById('negativeFilters').onclick = function(e){
+  loadFromUrlToApp(NegativeUrl);
 }
 
 document.forms[0].onsubmit = function(e) {
