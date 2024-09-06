@@ -37,6 +37,7 @@ Blocklists:
 12) Weapon
 13) Negative
 14) Hate and discrimination
+15) Mystic
 
 Расширение для цензурирования контента
 
@@ -76,6 +77,7 @@ Blocklists:
 12) Оружейное
 13) Негатив
 14) Язык ненависти и дискриминации
+15) Мистика
 
 Скриншот настроек / Options screenshot
 
