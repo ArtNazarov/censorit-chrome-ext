@@ -70,3 +70,7 @@ Blocklists:
 9) Аукционы
 10) Тюремное
 11) Мошенничество
+
+Скриншот настроек / Options screenshot
+
+![Screenshot](https://dl.dropbox.com/scl/fi/otp1ljl29hnoibqj94a97/censorit_screenshot.png?rlkey=lqqhx91sl19mr5qk2r0ztm9uu&st=nilq39bl)
