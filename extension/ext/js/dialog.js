@@ -9,6 +9,8 @@ const WearUrl = 'https://raw.githubusercontent.com/ArtNazarov/censorit-chrome-ex
 const AuctionUrl = 'https://raw.githubusercontent.com/ArtNazarov/censorit-chrome-ext/main/blocklist_keywords/auctions.txt';
 const PrisonUrl = 'https://raw.githubusercontent.com/ArtNazarov/censorit-chrome-ext/main/blocklist_keywords/prison.txt';
 const FraudUrl = 'https://raw.githubusercontent.com/ArtNazarov/censorit-chrome-ext/main/blocklist_keywords/fraud.txt';
+const WeaponUrl = 'https://raw.githubusercontent.com/ArtNazarov/censorit-chrome-ext/main/blocklist_keywords/weapon.txt';
+
 async function getLines(url) {
   try {
       // Получаем ответ от сервера
@@ -95,6 +97,9 @@ document.getElementById('fraudFilters').onclick = function(e){
   loadFromUrlToApp(FraudUrl);
 }
 
+document.getElementById('weaponFilters').onclick = function(e){
+  loadFromUrlToApp(WeaponUrl);
+}
 
 document.forms[0].onsubmit = function(e) {
     e.preventDefault(); // Prevent submission
