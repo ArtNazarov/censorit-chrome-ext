@@ -81,4 +81,4 @@ Blocklists:
 
 Скриншот настроек / Options screenshot
 
-![Screenshot](https://dl.dropbox.com/scl/fi/otp1ljl29hnoibqj94a97/censorit_screenshot.png?rlkey=lqqhx91sl19mr5qk2r0ztm9uu&st=nilq39bl)
+![Screenshot](https://dl.dropbox.com/scl/fi/3kixd8qvbyjtgalkh70qt/censorit_screenshot2.png?rlkey=e8l04gobm0szhze3qa765xhvs&st=snm6v0ja)
