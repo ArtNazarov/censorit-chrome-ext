@@ -36,6 +36,7 @@ Blocklists:
 11) Fraud
 12) Weapon
 13) Negative
+14) Hate and discrimination
 
 Расширение для цензурирования контента
 
@@ -74,6 +75,7 @@ Blocklists:
 11) Мошенничество
 12) Оружейное
 13) Негатив
+14) Язык ненависти и дискриминации
 
 Скриншот настроек / Options screenshot
 
