@@ -1,3 +1,3 @@
-# encrypt-chrome-ext
+# censorit-chrome-ext
 
-Encrypt and decrypt text on page
+Content censoring extension

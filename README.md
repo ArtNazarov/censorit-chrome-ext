@@ -2,6 +2,8 @@
 
 Content censoring extension
 
+The extension blocks by the most commonly used words
+
 Features:
 
 1. Save a large list of keywords in the extension
@@ -31,8 +33,11 @@ Blocklists:
 8) Tobacco
 9) Auctions
 10) Prison
+11) Fraud
 
 Расширение для цензурирования контента
+
+Расширение блокирует по наиболее употребительным словам
 
 Функции:
 
@@ -64,3 +69,4 @@ Blocklists:
 8) Табак
 9) Аукционы
 10) Тюремное
+11) Мошенничество

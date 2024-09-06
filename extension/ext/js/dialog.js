@@ -8,7 +8,7 @@ const TobaccoUrl = 'https://raw.githubusercontent.com/ArtNazarov/censorit-chrome
 const WearUrl = 'https://raw.githubusercontent.com/ArtNazarov/censorit-chrome-ext/main/blocklist_keywords/wear.txt';
 const AuctionUrl = 'https://raw.githubusercontent.com/ArtNazarov/censorit-chrome-ext/main/blocklist_keywords/auctions.txt';
 const PrisonUrl = 'https://raw.githubusercontent.com/ArtNazarov/censorit-chrome-ext/main/blocklist_keywords/prison.txt';
-
+const FraudUrl = 'https://raw.githubusercontent.com/ArtNazarov/censorit-chrome-ext/main/blocklist_keywords/fraud.txt';
 async function getLines(url) {
   try {
       // Получаем ответ от сервера
@@ -89,6 +89,10 @@ document.getElementById('auctionFilters').onclick = function(e){
 
 document.getElementById('prisonFilters').onclick = function(e){
   loadFromUrlToApp(PrisonUrl);
+}
+
+document.getElementById('fraudFilters').onclick = function(e){
+  loadFromUrlToApp(FraudUrl);
 }
 
 
