@@ -1,3 +1,51 @@
+function computeLPS(pattern) {
+  const lps = new Array(pattern.length).fill(0);
+  let length = 0; // Длина предыдущего наибольшего префикса
+  let i = 1;
+
+  while (i < pattern.length) {
+      if (pattern[i] === pattern[length]) {
+          length++;
+          lps[i] = length;
+          i++;
+      } else {
+          if (length !== 0) {
+              length = lps[length - 1];
+          } else {
+              lps[i] = 0;
+              i++;
+          }
+      }
+  }
+
+  return lps;
+}
+
+function kmpSearch(sMyString, sPattern) {
+  const lps = computeLPS(sPattern);
+  let i = 0; // Индекс для sMyString
+  let j = 0; // Индекс для sPattern
+
+  while (i < sMyString.length) {
+      if (sPattern[j] === sMyString[i]) {
+          i++;
+          j++;
+      }
+
+      if (j === sPattern.length) {
+          return true; // Найдена подстрока
+      } else if (i < sMyString.length && sPattern[j] !== sMyString[i]) {
+          if (j !== 0) {
+              j = lps[j - 1];
+          } else {
+              i++;
+          }
+      }
+  }
+
+  return false; // Подстрока не найдена
+}
+
 function addLayer(){
 // Create the layer element
 const layer = document.createElement('div');
@@ -47,12 +95,12 @@ function isDocumentHasTag(tag) {
   tag = tag.toLowerCase();
 
   // Проверяем, является ли тег подстрокой текущего домена
-  if (window.location.hostname.toLowerCase().includes(tag)) {
+  if (kmpSearch( window.location.hostname.toLowerCase(), tag)) {
     return true;
   }
 
   // Проверяем, является ли тег подстрокой текущего URL
-  if (window.location.href.toLowerCase().includes(tag)) {
+  if (kmpSearch(window.location.href.toLowerCase(), tag)) {
     return true;
   }
 
@@ -61,7 +109,7 @@ function isDocumentHasTag(tag) {
 
   // Проверяем, является ли тег подстрокой одного из параметров или значений параметров
   for (const [key, value] of urlParams) {
-    if (key.toLowerCase().includes(tag) || value.toLowerCase().includes(tag)) {
+    if (kmpSearch(key.toLowerCase(), tag) || kmpSearch(value.toLowerCase(), tag)) {
       return true;
     }
   }
@@ -69,7 +117,7 @@ function isDocumentHasTag(tag) {
   // Поиск по тексту
    const elements = document.querySelectorAll('*'); 
    for (let element of elements){
-    if (element.textContent.toLowerCase().includes(tag)){
+    if (kmpSearch(element.textContent.toLowerCase(), tag)){
       return true;
     }
    }
