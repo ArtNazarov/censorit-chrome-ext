@@ -12,6 +12,7 @@ a) the domain contains the specified keyword
 b) the path to the resource or the resource name includes the keyword
 c) the parameter or parameter value is prohibited by the keyword
 d) the page markup contains the specified fragment
+3. Whitelist of allowed domains
 
 Installation: After downloading the extension code
 1) Enable developer mode in the browser
@@ -51,6 +52,7 @@ Blocklists:
 б) путь к ресурсу или имя ресурса включает ключевое слово
 в) параметр или значение параметра запрещено по ключевому слову
 г) в разметке страницы есть заданный фрагмент
+3. Белый список разрешенных доменов
 
 Установка: После скачивания кода расширения
 1) Включить режим для разработчика в браузере
@@ -81,4 +83,4 @@ Blocklists:
 
 Скриншот настроек / Options screenshot
 
-![Screenshot](https://dl.dropbox.com/scl/fi/3kixd8qvbyjtgalkh70qt/censorit_screenshot2.png?rlkey=e8l04gobm0szhze3qa765xhvs&st=snm6v0ja)
+![Screenshot](https://dl.dropbox.com/scl/fi/ks0fs5xqkhjlhzm20rupt/chrome_censorit_upd1_1.png?rlkey=vlnrpi55v8q4emg8szic4ldak&st=zq1pj0bi)
