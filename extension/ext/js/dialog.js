@@ -165,22 +165,22 @@ document.getElementById("main_form").onsubmit = function(e) {
 
 
 document.addEventListener("DOMContentLoaded", function(){
-  const tags = localStorage.getItem('tags'); // get tags from localStorage
-  const whitelist = localStorage.getItem('whitelist'); // get whitelist from localStorage
-  let stateOfDialog = localStorage.getItem('stateOfDialog'); // get state of dialog (e.g. "LOCKED" or "UNLOCKED")
+  const tags = localStorage.getItem('tags') || "xxx\nporn"; // get tags from localStorage
+  const whitelist = localStorage.getItem('whitelist') || "google.com\nwww.google.com"; // get whitelist from localStorage
+  let stateOfDialog = localStorage.getItem('stateOfDialog') || "UNLOCKED"; // get state of dialog (e.g. "LOCKED" or "UNLOCKED")
   if (stateOfDialog == null){
     stateOfDialog = "UNLOCKED"; // first run
   };
   makeFormsVisibleByState(stateOfDialog);
   
-  let passwordOfDialog = localStorage.getItem('password'); 
+  let passwordOfDialog = localStorage.getItem('password') || ""; 
    console.log(  tags  );
    console.log( whitelist);
    console.log( stateOfDialog);
    console.log( passwordOfDialog);
    // set UI values from localStorage
-   document.getElementById('tags').value = localStorage.getItem('tags');
-   document.getElementById('whitelist').value = localStorage.getItem('whitelist');
+   document.getElementById('tags').value = tags;
+   document.getElementById('whitelist').value = whitelist;
    document.getElementById('state').value = stateOfDialog;
    if (passwordOfDialog == null) passwordOfDialog='';
    document.getElementById('password1').value = passwordOfDialog;

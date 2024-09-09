@@ -1,6 +1,6 @@
 {
   "name": "CensorIt",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "manifest_version": 2,
   "description": "Block negative content. Nazarov A.A., Orenburg, 2024",
   "homepage_url": "http://github.com/artnazarov",
