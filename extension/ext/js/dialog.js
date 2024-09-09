@@ -120,17 +120,23 @@ document.getElementById('mysticFilters').onclick = function(e){
 document.forms[0].onsubmit = function(e) {
     e.preventDefault(); // Prevent submission
     let tags = document.getElementById('tags').value;
+    let whitelist = document.getElementById('whitelist').value;
 
     chrome.runtime.getBackgroundPage(function(bgWindow) {
       // sync values with inject.js storage
         bgWindow.setTags(tags);
+        bgWindow.setWhiteList(whitelist);
         console.log('Options saved');
         window.close();     // Close dialog
     });
 };
 
 document.addEventListener("DOMContentLoaded", function(){
+  const tags = localStorage.getItem('tags');
+  const whitelist = localStorage.getItem('whitelist'); 
     // set UI values from localStorage
-   console.log(   localStorage.getItem('tags') );
-   document.getElementById('tags').value =   localStorage.getItem('tags');
+   console.log(  tags  );
+   console.log( whitelist);
+   document.getElementById('tags').value = localStorage.getItem('tags');
+   document.getElementById('whitelist').value = localStorage.getItem('whitelist');
  });

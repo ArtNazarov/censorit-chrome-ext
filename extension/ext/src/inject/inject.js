@@ -90,6 +90,17 @@ function addInfo(title, message){
   return layer;
   }
 
+function isAllowedHostName(whitelist){
+  const hostName = window.location.hostname.toLowerCase();
+  let domains = whitelist.toLowerCase().split("\n");
+  let flag = false;
+  for (let i=0;i<domains.length;i++){
+    let someWhiteListDomain = domains[i].trim();
+    flag = flag || (kmpSearch(hostName, someWhiteListDomain));
+  };
+  return flag;
+} 
+
 function isDocumentHasTag(tag) {
   // Приводим тег к нижнему регистру для регистронезависимого сравнения
   tag = tag.toLowerCase();
@@ -133,9 +144,16 @@ function isDocumentHasTag(tag) {
 /* SYNC OPTIONS */
 /* Синхронизация с локальным хранилищем */
 
+// Синхронизация тегов
 chrome.runtime.sendMessage({method: "sync_tags"}, function(response) {
   console.log('Синхронизированы теги '+ response.tags);
   localStorage.setItem('tags',  response.tags);
+});
+
+// Синхронизация белого списка
+chrome.runtime.sendMessage({method: "sync_whitelist"}, function(response) {
+  console.log('Синхронизирован белый список '+ response.whitelist);
+  localStorage.setItem('whitelist',  response.whitelist);
 });
  
 
@@ -169,8 +187,13 @@ chrome.extension.sendMessage({}, function(response) {
 		console.log("Расширение готово к работе!");
 
                 // ----------------------------------------------------------
-  
- 
+  const whitelist = localStorage.getItem('whitelist');
+  if (isAllowedHostName(whitelist)){
+    console.log('Domain is whitelisted');
+    layer.remove();
+    clearInterval(readyStateCheckInterval);
+    return;
+  }
   
   console.log('Теги из локального хранилища = ' + localStorage.getItem('tags') );
   
