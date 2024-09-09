@@ -1,8 +1,26 @@
 <!DOCTYPE html>
 <html lang="ru">
-    <head><title>Параметры расширения / Options</title></head>
-    <meta charset="utf-8">
+    <head>
+        <meta charset="utf-8">
+        <title>Параметры расширения / Options</title> 
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
+        .filterButton {
+            background-color: 	rgb(56, 9, 138);
+            color: rgb(214, 223, 218);
+            cursor: pointer;
+            padding:3px;
+            border: thin solid blue;
+            border-radius: 3px;
+        }
+        .filterButton:hover {
+            padding: 3px;
+            border-radius: 3px;
+            color: 	rgb(44, 6, 109);
+            background-color: rgb(214, 223, 218);
+            cursor: pointer;
+            border: thin solid rgb(41, 41, 245);
+        }
         .parent {
     display: flex;
     flex-direction: row; /* Aligns children vertically */
@@ -16,44 +34,49 @@
 }
 
     </style>
+</head>
 <body>
 
 <form id="password_unlock_form" name="password_unlock_form">
     <label for="password">Пароль / Password</label><br/>
-    <input type="password" name="password" id="password" /><br/>
-    <input type="submit" value="Войти / Login" /><br/>
+    <input  class="border-2 border-green-500 rounded-lg p-2 focus:outline-none focus:border-green-700 transition duration-200" 
+    type="password" name="password" id="password" /><br/>
+    <input  class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"  type="submit" value="Войти / Login" /><br/>
 </form><br/>
 
 <form id="main_form" name="password_unlock_form"> 
     <h3>Установка пароля / Setup password</h3>
     <input type="hidden" name="state" id="state" />
     <label for="password1">Пароль / Password</label><br/>
-    <input type="password" id="password1" name="password1" /><br/>
+    <input  class="border-2 border-green-500 rounded-lg p-2 focus:outline-none focus:border-green-700 transition duration-200"   
+    type="password" id="password1" name="password1" /><br/>
     <label for="password2">Подтверждение пароля / Confirm password</label><br/>
-    <input type="password" id="password2" name="password2" /><br/>
-    <button id="btnSetPassword" name="btnSetPassword">Установить пароль / Set password</button><br/><br/>
+    <input  class="border-2 border-green-500 rounded-lg p-2 focus:outline-none focus:border-green-700 transition duration-200"  
+    type="password" id="password2" name="password2" /><br/>
+    <button class="border border-blue-500 text-blue-500 px-4 py-2 rounded hover:bg-blue-500 hover:text-white"
+     id="btnSetPassword" name="btnSetPassword">Установить пароль / Set password</button><br/><br/>
     <label for="tags">Заблокировать / Block</label><br/>
     <textarea rows="10" cols="20" name="tags" id="tags"></textarea><br/>
     <br/><h3>Нажмите, чтобы загрузить фильтры:</h3>
     <div class="parent">
         <div class="child">
-            <input type="button" id="negativeFilters" name="negativeFilters" value="Негативное / Negative"><br/>
-            <input type="button" id="adultFilters" name="adultFilters" value="18+"><br/>
-            <input type="button" id="wearFilters" name="wearFilters" value="Нижнее белье / Wear"><br/>
-            <input type="button" id="betFilters" name="betFilters" value="Азартные игры / Bet"><br/>
-            <input type="button" id="alcoholFilters" name="alcoholFilters" value="Алкоголь / Alcohol"><br/>
-            <input type="button" id="datingFilters" name="datingFilters" value="Знакомства / Dating"><br/>
-            <input type="button" id="drugsFilters" name="drugsFilters" value="Запрещенные вещества / Drugs"><br/>
-            <input type="button" id="nudityFilters" name="nudityFilters" value="Нагота / Nudity"><br/>
+            <input class="filterButton" type="button" id="negativeFilters" name="negativeFilters" value="Негативное / Negative"><br/>
+            <input class="filterButton" type="button" id="adultFilters" name="adultFilters" value="18+"><br/>
+            <input class="filterButton" type="button" id="wearFilters" name="wearFilters" value="Нижнее белье / Wear"><br/>
+            <input class="filterButton" type="button" id="betFilters" name="betFilters" value="Азартные игры / Bet"><br/>
+            <input class="filterButton" type="button" id="alcoholFilters" name="alcoholFilters" value="Алкоголь / Alcohol"><br/>
+            <input class="filterButton" type="button" id="datingFilters" name="datingFilters" value="Знакомства / Dating"><br/>
+            <input class="filterButton" type="button" id="drugsFilters" name="drugsFilters" value="Запрещенные вещества / Drugs"><br/>
+            <input class="filterButton" type="button" id="nudityFilters" name="nudityFilters" value="Нагота / Nudity"><br/>
         </div>
         <div class="child">
-            <input type="button" id="tobaccoFilters" name="tobaccoFilters" value="Табак / Tobacco"><br/>
-            <input type="button" id="auctionFilters" name="auctionFilters" value="Аукционы / Auctions"><br/>
-            <input type="button" id="prisonFilters" name="prisonFilters" value="Тюремное / Prison"><br/>
-            <input type="button" id="fraudFilters" name="fraudFilters" value="Мошенничество / Fraud"><br/>
-            <input type="button" id="weaponFilters" name="weaponFilters" value="Оружейное / Weapon"><br/>
-            <input type="button" id="hateFilters" name="hateFilters" value="Язык ненависти / Hate slang"><br/>
-            <input type="button" id="mysticFilters" name="mysticFilters" value="Мистика / Mystic"><br/></div>
+            <input class="filterButton" type="button" id="tobaccoFilters" name="tobaccoFilters" value="Табак / Tobacco"><br/>
+            <input class="filterButton" type="button" id="auctionFilters" name="auctionFilters" value="Аукционы / Auctions"><br/>
+            <input class="filterButton" type="button" id="prisonFilters" name="prisonFilters" value="Тюремное / Prison"><br/>
+            <input class="filterButton" type="button" id="fraudFilters" name="fraudFilters" value="Мошенничество / Fraud"><br/>
+            <input class="filterButton" type="button" id="weaponFilters" name="weaponFilters" value="Оружейное / Weapon"><br/>
+            <input class="filterButton" type="button" id="hateFilters" name="hateFilters" value="Язык ненависти / Hate slang"><br/>
+            <input class="filterButton" type="button" id="mysticFilters" name="mysticFilters" value="Мистика / Mystic"><br/></div>
         </div>    
     <br/>
     <h3>WhiteList / Белый список</h3>
@@ -63,7 +86,8 @@
         id="whitelist" 
         name="whitelist">
     </textarea> <br/>
-    <input type="submit" value="Apply / Применить">
+    <input class="border border-blue-500 text-blue-500 px-4 py-2 rounded hover:bg-blue-500 hover:text-white"
+     type="submit" value="Apply / Применить">
 </form>
 <script src="../js/dialog.js"></script>
 </body>
