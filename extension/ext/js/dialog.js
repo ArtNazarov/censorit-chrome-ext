@@ -117,26 +117,87 @@ document.getElementById('mysticFilters').onclick = function(e){
 }
 
 
-document.forms[0].onsubmit = function(e) {
+function makeFormsVisibleByState(stateOfDialog){
+  if (stateOfDialog == "UNLOCKED" || stateOfDialog == null){
+    document.getElementById("main_form").style.display = "block";
+    document.getElementById("password_unlock_form").style.display = "none";
+  } else {
+   document.getElementById("main_form").style.display = "none";
+   document.getElementById("password_unlock_form").style.display = "block";
+  }
+}
+
+document.getElementById("password_unlock_form").onsubmit = function(e) {
+  e.preventDefault(); // Prevent submission
+  let password = document.getElementById("password").value;
+  chrome.runtime.getBackgroundPage(function(bgWindow) {
+    // sync values with inject.js storage
+      const expectedPassword =  localStorage.getItem("password");
+      console.log("Введен пароль", password);
+      console.log("Ожидается пароль", localStorage.getItem("password"));
+      if (password == expectedPassword || expectedPassword === null ){
+          let stateOfDialog = "UNLOCKED";
+          makeFormsVisibleByState(stateOfDialog);
+          bgWindow.setState(stateOfDialog);
+      }
+  });
+};
+
+
+document.getElementById("main_form").onsubmit = function(e) {
     e.preventDefault(); // Prevent submission
     let tags = document.getElementById('tags').value;
     let whitelist = document.getElementById('whitelist').value;
 
     chrome.runtime.getBackgroundPage(function(bgWindow) {
+      console.log(bgWindow);
       // sync values with inject.js storage
         bgWindow.setTags(tags);
         bgWindow.setWhiteList(whitelist);
         console.log('Options saved');
-        window.close();     // Close dialog
+        let stateOfDialog = "LOCKED";
+        bgWindow.setState(stateOfDialog);
+        makeFormsVisibleByState(stateOfDialog);
+        // window.close();     // Close dialog
     });
 };
 
+
+
 document.addEventListener("DOMContentLoaded", function(){
-  const tags = localStorage.getItem('tags');
-  const whitelist = localStorage.getItem('whitelist'); 
-    // set UI values from localStorage
+  const tags = localStorage.getItem('tags'); // get tags from localStorage
+  const whitelist = localStorage.getItem('whitelist'); // get whitelist from localStorage
+  let stateOfDialog = localStorage.getItem('stateOfDialog'); // get state of dialog (e.g. "LOCKED" or "UNLOCKED")
+  if (stateOfDialog == null){
+    stateOfDialog = "UNLOCKED"; // first run
+  };
+  makeFormsVisibleByState(stateOfDialog);
+  
+  let passwordOfDialog = localStorage.getItem('password'); 
    console.log(  tags  );
    console.log( whitelist);
+   console.log( stateOfDialog);
+   console.log( passwordOfDialog);
+   // set UI values from localStorage
    document.getElementById('tags').value = localStorage.getItem('tags');
    document.getElementById('whitelist').value = localStorage.getItem('whitelist');
+   document.getElementById('state').value = stateOfDialog;
+   if (passwordOfDialog == null) passwordOfDialog='';
+   document.getElementById('password1').value = passwordOfDialog;
+   document.getElementById('password2').value = passwordOfDialog;
+
+   
  });
+
+
+ document.getElementById("btnSetPassword").onclick = function(e){
+  console.log("Изменение пароля");
+  const password1 = document.getElementById("password1").value;
+  const password2 = document.getElementById("password2").value;
+  if (password1 == password2){
+    chrome.runtime.getBackgroundPage(function(bgWindow) {
+      bgWindow.setPassword(password1);
+      console.log('Установлен пароль', password1);
+    });
+  };  
+ };

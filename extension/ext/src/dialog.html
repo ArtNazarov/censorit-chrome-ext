@@ -17,7 +17,21 @@
 
     </style>
 <body>
-<form>
+
+<form id="password_unlock_form" name="password_unlock_form">
+    <label for="password">Пароль / Password</label><br/>
+    <input type="password" name="password" id="password" /><br/>
+    <input type="submit" value="Войти / Login" /><br/>
+</form><br/>
+
+<form id="main_form" name="password_unlock_form"> 
+    <h3>Установка пароля / Setup password</h3>
+    <input type="hidden" name="state" id="state" />
+    <label for="password1">Пароль / Password</label><br/>
+    <input type="password" id="password1" name="password1" /><br/>
+    <label for="password2">Подтверждение пароля / Confirm password</label><br/>
+    <input type="password" id="password2" name="password2" /><br/>
+    <button id="btnSetPassword" name="btnSetPassword">Установить пароль / Set password</button><br/><br/>
     <label for="tags">Заблокировать / Block</label><br/>
     <textarea rows="10" cols="20" name="tags" id="tags"></textarea><br/>
     <br/><h3>Нажмите, чтобы загрузить фильтры:</h3>
