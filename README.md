@@ -85,4 +85,4 @@ Blocklists:
 
 Скриншот настроек / Options screenshot
 
-![Screenshot](https://dl.dropbox.com/scl/fi/sy8dpb36rri3sdfq73us6/censorit_chrome_ext_upd_1_2.png?rlkey=uhghhdn9ug8f6d9m9guu5u1hj&st=1w98hv04)
+![Screenshot](https://dl.dropbox.com/scl/fi/g38ovnef9yga31vicm9gr/Opera-Snapshot_2024-09-09_234502_chrome-extension.png?rlkey=ye5l6pp9vf2ourq9zp08a3jzu&st=r4rmujfv)
