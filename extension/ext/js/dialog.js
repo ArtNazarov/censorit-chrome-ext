@@ -13,6 +13,7 @@ const WeaponUrl = 'https://raw.githubusercontent.com/ArtNazarov/censorit-chrome-
 const NegativeUrl = 'https://raw.githubusercontent.com/ArtNazarov/censorit-chrome-ext/main/blocklist_keywords/negatives.txt';
 const HateUrl = 'https://raw.githubusercontent.com/ArtNazarov/censorit-chrome-ext/main/blocklist_keywords/hate.txt';
 const MysticUrl = 'https://raw.githubusercontent.com/ArtNazarov/censorit-chrome-ext/main/blocklist_keywords/mystic.txt';
+const GamingUrl = 'https://raw.githubusercontent.com/ArtNazarov/censorit-chrome-ext/main/blocklist_keywords/gaming.txt';
 
 async function getLines(url) {
   try {
@@ -114,6 +115,10 @@ document.getElementById('hateFilters').onclick = function(e){
 
 document.getElementById('mysticFilters').onclick = function(e){
   loadFromUrlToApp(MysticUrl);
+}
+
+document.getElementById('gamingFilters').onclick = function(e){
+  loadFromUrlToApp(GamingUrl);
 }
 
 
